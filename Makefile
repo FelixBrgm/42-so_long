@@ -13,7 +13,7 @@ PRINTF = ./includes/printf
 
 all: $(NAME)
 
-$(NAME): $(OFILES)
+$(NAME): $(OFILES) so_long.o
 	make -C $(LIBFT)
 	ar rcs $(NAME) $(LIBFT)/*.o
 	make -C $(GET_NEXT_LINE)
@@ -21,17 +21,19 @@ $(NAME): $(OFILES)
 	make -C $(PRINTF)
 	ar rcs $(NAME) $(PRINTF)/functions/*.o
 	ar rcs $(NAME) $(OFILES)  
-	gcc so_long.c $(NAME) -Wall -Wextra -Werror -L ./includes/minilibx -lmlx -framework OpenGL -framework AppKit
+	gcc so_long.c $(NAME) -o so_long -Wall -Wextra -Werror -L ./includes/minilibx -lmlx -framework OpenGL -framework AppKit
 
 main: $(NAME)
 	make re
-	gcc so_long.c $(NAME) -Wall -Wextra -Werror -L ./includes/minilibx -lmlx -framework OpenGL -framework AppKit
+	gcc so_long.c $(NAME) -o so_long -Wall -Wextra -Werror -L ./includes/minilibx -lmlx -framework OpenGL -framework AppKit
 
 clean: 
 	make clean -C $(LIBFT)
 	make clean -C $(GET_NEXT_LINE)
 	make clean -C $(PRINTF)
 	rm -f src/*.o
+	rm -f *.o
+	rm -f so_long
 
 fclean: clean
 	make fclean -C $(LIBFT)
@@ -41,4 +43,3 @@ fclean: clean
 
 re: fclean all
 
-.SILENT:

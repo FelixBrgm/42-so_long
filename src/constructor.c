@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:22:20 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/05/14 18:29:45 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:33:47 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_game	*game_constructor(void)
 	game = ft_calloc(1, sizeof(t_game));
 	if (!game)
 		return (NULL);
-	game->map.range = 2;
+	game->map.range = 4;
 	game->steps = 0;
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, (game->map.range * 2 + 1) * 64,
